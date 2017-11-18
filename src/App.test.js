@@ -1,8 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TestUtils from 'react-dom/test-utils'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+import App from './App'
+
+describe('App', () => {
+  it('renders', () => {
+    const output = TestUtils.renderIntoDocument(<App />)
+    const header = TestUtils.findRenderedDOMComponentWithTag(output, 'h2')
+
+    expect(header.textContent).toContain('App is running!')
+  })
+})
